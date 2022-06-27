@@ -12,6 +12,7 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Scanner;
@@ -31,9 +32,9 @@ public class BruteService
 {
 	
 	
-	public HashMap<String,String> bruteGetRequest(BruteGetModel bruteGetModel)
+	public LinkedHashMap<String,String> bruteGetRequest(BruteGetModel bruteGetModel)
 	{
-		HashMap<String,String> credentials = new HashMap<String,String>();
+		LinkedHashMap<String,String> credentials = new LinkedHashMap<String,String>();
 		
 			try 
 			{
@@ -59,14 +60,14 @@ public class BruteService
 				HttpEntity<String> entity = new HttpEntity<String>("",headers);
 				
 				Scanner fileBruteForce = new Scanner(new File(bruteGetModel.getDictionaryPath()));
-				List<String> passwordList = new ArrayList<String>();
-				int listPasswordCounter=0;
+				
+				
 				
 				while(fileBruteForce.hasNext())
 				{
 					StringBuilder passwordurl = new StringBuilder(urlGet);
-					passwordList.add(fileBruteForce.next());
-					String password = passwordurl.toString().replace("target",passwordList.get(listPasswordCounter));
+					String localpassword = fileBruteForce.next();
+					String password = passwordurl.toString().replace("target",localpassword);
 					
 					URI uri = new URI(password);
 				
@@ -77,11 +78,11 @@ public class BruteService
 					if(!response.getBody().contains(bruteGetModel.getWrongMessageLogin()))
 					{
 						credentials.put("username",bruteGetModel.getUser());
-						credentials.put("password",passwordList.get(listPasswordCounter));
+						credentials.put("password",localpassword);
 						return credentials;
 					}
 					
-					listPasswordCounter++;
+					
 					
 				}
 				
