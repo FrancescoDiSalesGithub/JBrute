@@ -19,6 +19,8 @@ import java.util.Scanner;
 
 import javax.servlet.http.Cookie;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +32,8 @@ import com.francescodisalesgithub.JBrute.model.BruteGetModel;
 @Service
 public class BruteService 
 {
-	
+	 Logger logger = LoggerFactory.getLogger(BruteService.class);
+
 	
 	public LinkedHashMap<String,String> bruteGetRequest(BruteGetModel bruteGetModel)
 	{
@@ -71,16 +74,22 @@ public class BruteService
 					
 					URI uri = new URI(password);
 				
+					
+					
 					RestTemplate javaClient = new RestTemplate();
 					ResponseEntity<String> response = javaClient.exchange(uri, HttpMethod.GET, entity, String.class);
 					
 					
 					if(!response.getBody().contains(bruteGetModel.getWrongMessageLogin()))
 					{
+						logger.info("username: "+bruteGetModel.getUser()+" password: "+localpassword+" [OK]");
+						
 						credentials.put("username",bruteGetModel.getUser());
 						credentials.put("password",localpassword);
 						return credentials;
 					}
+					else
+						logger.info("username: "+bruteGetModel.getUser()+" password: "+localpassword+" [KO]");
 					
 					
 					
