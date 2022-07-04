@@ -1,9 +1,11 @@
 package com.francescodisalesgithub.JBrute.model;
 
+import java.util.List;
+
 public class DictionaryUpdate
 {
     private String dictionary;
-    private String word;
+    private List<String> word;
 
     public String getDictionary() {
         return dictionary;
@@ -13,11 +15,11 @@ public class DictionaryUpdate
         this.dictionary = dictionary;
     }
 
-    public String getWord() {
+    public List<String> getWord() {
         return word;
     }
 
-    public void setWord(String word) {
+    public void setWord(List<String> word) {
         this.word = word;
     }
 }
