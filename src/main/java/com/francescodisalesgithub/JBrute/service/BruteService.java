@@ -5,22 +5,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.http.HttpClient;
-import java.net.http.HttpHeaders;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandlers;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
+
 import java.util.Map.Entry;
 import java.util.Scanner;
 
-import javax.servlet.http.Cookie;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.francescodisalesgithub.JBrute.model.BruteGetModel;
+import com.francescodisalesgithub.JBrute.model.BruteModel;
 
 @Service
 public class BruteService 
@@ -120,10 +113,19 @@ public class BruteService
 				return credentials;
 
 			} 
-			
-			
-	
 		
 	}
+
+
+	public LinkedHashMap<String, String> brutePostRequest(BruteModel bruteModel) 
+	{
+
+		org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
+		headers.add("Cookie", bruteModel.getCookies());
+
+		return null;
+	}
+	
+	
 
 }

@@ -1,6 +1,6 @@
 package com.francescodisalesgithub.JBrute.controller;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +13,7 @@ import com.francescodisalesgithub.JBrute.model.BruteGetModel;
 import com.francescodisalesgithub.JBrute.model.BruteModel;
 import com.francescodisalesgithub.JBrute.service.BruteService;
 
-@RestController
+@RestController(value = "bruteforce")
 public class BruteController 
 {
 	
@@ -21,15 +21,15 @@ public class BruteController
 	BruteService service;
 	
 	@PostMapping("brute-get")
-	public HashMap<String, String> bruteHttp(@RequestBody BruteGetModel bruteGetModel)
+	public LinkedHashMap<String, String> bruteHttp(@RequestBody BruteGetModel bruteGetModel)
 	{
 		return service.bruteGetRequest(bruteGetModel);
 	}
 	
-	@PostMapping("brute")
-	public void bruteHttpPost(@RequestBody BruteModel bruteModel)
+	@PostMapping("brute-post")
+	public LinkedHashMap<String,String> bruteHttpPost(@RequestBody BruteModel bruteModel)
 	{
-		
+		return service.brutePostRequest(bruteModel);
 	}
 
 }

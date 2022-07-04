@@ -15,8 +15,6 @@ public class BruteGetModel
 	private String wrongMessageLogin;
 	
 	
-	
-	
 	public String getUser() {
 		return user;
 	}
