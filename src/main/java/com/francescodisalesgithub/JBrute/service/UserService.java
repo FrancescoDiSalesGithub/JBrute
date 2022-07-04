@@ -28,9 +28,10 @@ public class UserService
 
     }
 
-    public void searchUser(User user)
+    public User searchUser(User user)
     {
-
+        User specificUser = userRepository.findUser(user.getUsername());
+        return specificUser;
     }
 
 }

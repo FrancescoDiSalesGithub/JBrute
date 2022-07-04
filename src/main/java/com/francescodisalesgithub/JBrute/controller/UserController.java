@@ -1,5 +1,7 @@
 package com.francescodisalesgithub.JBrute.controller;
 
+import com.francescodisalesgithub.JBrute.enums.RestResponseMessagesEnum;
+import com.francescodisalesgithub.JBrute.model.MessagerRestResponse;
 import com.francescodisalesgithub.JBrute.model.User;
 import com.francescodisalesgithub.JBrute.service.UserService;
 import org.slf4j.Logger;
@@ -36,16 +38,20 @@ public class UserController
 
 
 	@PostMapping("select-credential")
-	public void selectCredential(@RequestBody User user)
+	public Object selectCredential(@RequestBody User user)
 	{
 		try
 		{
-			userService.searchUser(user);
+			return userService.searchUser(user);
 		}
 		catch(Exception e)
 		{
 			logger.error(e.getMessage());
 		}
+
+		MessagerRestResponse responseMessager = new MessagerRestResponse();
+		responseMessager.setMessage(RestResponseMessagesEnum.USER_NOT_INSERTED.toString());
+		return responseMessager;
 	}
 	
 	@PostMapping("update-credential")
