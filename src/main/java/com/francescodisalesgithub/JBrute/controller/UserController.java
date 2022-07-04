@@ -1,6 +1,7 @@
 package com.francescodisalesgithub.JBrute.controller;
 
 import com.francescodisalesgithub.JBrute.enums.RestResponseMessagesEnum;
+import com.francescodisalesgithub.JBrute.exception.UserUsernameException;
 import com.francescodisalesgithub.JBrute.model.MessagerRestResponse;
 import com.francescodisalesgithub.JBrute.model.User;
 import com.francescodisalesgithub.JBrute.service.UserService;
@@ -40,18 +41,38 @@ public class UserController
 	@PostMapping("select-credential")
 	public Object selectCredential(@RequestBody User user)
 	{
+		Object userOutput = null;
+
 		try
 		{
-			return userService.searchUser(user);
+			userOutput = userService.searchUser(user);
 		}
-		catch(Exception e)
+		catch(UserUsernameException ue)
+		{
+			logger.error(ue.getMessage());
+			MessagerRestResponse responseMessager = new MessagerRestResponse();
+			responseMessager.setMessage(RestResponseMessagesEnum.ERROR_DATABASE.toString());
+
+			return responseMessager;
+		}
+		catch (Exception e)
 		{
 			logger.error(e.getMessage());
+			MessagerRestResponse responseMessager = new MessagerRestResponse();
+			responseMessager.setMessage(RestResponseMessagesEnum.ERROR_DATABASE.toString());
+
+			return responseMessager;
 		}
 
-		MessagerRestResponse responseMessager = new MessagerRestResponse();
-		responseMessager.setMessage(RestResponseMessagesEnum.USER_NOT_INSERTED.toString());
-		return responseMessager;
+		if(userOutput == null)
+		{
+			MessagerRestResponse responseMessager = new MessagerRestResponse();
+			responseMessager.setMessage(RestResponseMessagesEnum.USER_NOT_FOUND.toString());
+			return responseMessager;
+		}
+
+		return userOutput;
+
 	}
 	
 	@PostMapping("update-credential")

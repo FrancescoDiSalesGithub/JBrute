@@ -1,7 +1,11 @@
 package com.francescodisalesgithub.JBrute.service;
 
+import com.francescodisalesgithub.JBrute.enums.LoggerMessages;
+import com.francescodisalesgithub.JBrute.exception.UserUsernameException;
 import com.francescodisalesgithub.JBrute.model.User;
 import com.francescodisalesgithub.JBrute.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +13,7 @@ import org.springframework.stereotype.Service;
 public class UserService
 {
 
+    Logger logger = LoggerFactory.getLogger(UserService.class);
     @Autowired
     private UserRepository userRepository;
 
@@ -28,10 +33,16 @@ public class UserService
 
     }
 
-    public User searchUser(User user)
+    public com.francescodisalesgithub.JBrute.entity.User searchUser(User user) throws UserUsernameException,Exception
     {
-        User specificUser = userRepository.findUser(user.getUsername());
-        return specificUser;
+        if(user.getUsername() == null)
+        {
+            logger.error(LoggerMessages.USERNAME_NULL.toString());
+            throw new UserUsernameException(LoggerMessages.USERNAME_NULL.toString());
+        }
+
+        return userRepository.findUser(user.getUsername());
+
     }
 
 }

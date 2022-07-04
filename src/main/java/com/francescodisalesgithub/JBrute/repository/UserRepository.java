@@ -10,6 +10,6 @@ public interface UserRepository extends CrudRepository<User,String>
 {
 
     @Query("Select u from users u where u.username= :user")
-    com.francescodisalesgithub.JBrute.model.User findUser(String user);
+    User findUser(String user);
 
 }

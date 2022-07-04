@@ -2,9 +2,10 @@ package com.francescodisalesgithub.JBrute.enums;
 
 public enum RestResponseMessagesEnum
 {
-    USER_NOT_INSERTED("Utente non inserito"),
-    USER_NOT_FOUND("Utente non trovato");
-    
+    ERROR_DATABASE("Error on db"),
+    USER_NOT_INSERTED("User not inserted in the db"),
+    USER_NOT_FOUND("User not found");
+
     String message;
     private RestResponseMessagesEnum(String message)
     {
