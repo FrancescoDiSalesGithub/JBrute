@@ -72,6 +72,18 @@ public class PlatformController
         }
 
     }
+    
+    @PostMapping("/platform/import")
+    public void importPlatform()
+    {
+    	
+    }
+    
+    @PostMapping("/platform/export")
+    public void exportPlatform()
+    {
+    	
+    }
 
 
 }

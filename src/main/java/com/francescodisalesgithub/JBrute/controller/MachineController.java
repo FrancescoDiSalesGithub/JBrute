@@ -39,5 +39,18 @@ public class MachineController
 	{
 		
 	}
+	
+	@PostMapping("/machine/import")
+	public void importMachines()
+	{
+		
+	}
+	
+	@PostMapping("/machine/export")
+	public void exportMachines()
+	{
+		
+	}
+	
 
 }

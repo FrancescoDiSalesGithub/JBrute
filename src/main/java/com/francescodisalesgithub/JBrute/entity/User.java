@@ -1,8 +1,13 @@
 package com.francescodisalesgithub.JBrute.entity;
 
+import java.util.LinkedHashSet;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity(name = "users")
 public class User 
@@ -16,6 +21,10 @@ public class User
 	
 	@Column(name = "password")
 	private String password;
+	
+	@ManyToMany
+	@JoinTable(joinColumns = @JoinColumn(name="IP"))
+	private LinkedHashSet<Machine> machine;
 
 	public User()
 	{

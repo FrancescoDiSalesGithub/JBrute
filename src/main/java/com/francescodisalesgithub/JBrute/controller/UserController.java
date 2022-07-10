@@ -101,4 +101,16 @@ public class UserController
 		}
 	}
 
+	@PostMapping("/user/import")
+	public void importCredential()
+	{
+		
+	}
+	
+	@PostMapping("/user/export")
+	public void exportCredential()
+	{
+		
+	}
+	
 }
