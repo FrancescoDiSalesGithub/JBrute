@@ -14,6 +14,7 @@ public class UserService
 {
 
     Logger logger = LoggerFactory.getLogger(UserService.class);
+    
     @Autowired
     private UserRepository userRepository;
 
@@ -25,12 +26,12 @@ public class UserService
 
     public void deleteUser(User user)
     {
-
+    		userRepository.deleteById(user.getEmail());
     }
 
     public void updateUser(User user)
     {
-
+    		
     }
 
     public com.francescodisalesgithub.JBrute.entity.User searchUser(User user) throws UserUsernameException,Exception

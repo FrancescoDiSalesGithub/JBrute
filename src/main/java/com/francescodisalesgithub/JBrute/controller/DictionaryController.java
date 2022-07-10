@@ -21,7 +21,7 @@ public class DictionaryController
     @Autowired
     DictionaryService dictionaryService;
 
-    @PostMapping("/insert-dictionary")
+    @PostMapping("/dictionary/insert")
     public void insertDictionary(@RequestBody DictionaryInsert dictionary)
     {
         try
@@ -35,7 +35,7 @@ public class DictionaryController
 
     }
 
-    @PostMapping("/select-dictionary")
+    @PostMapping("/dictionary/select")
     public void selectDictionary(@RequestBody Dictionary dictionary)
     {
         try
@@ -48,7 +48,7 @@ public class DictionaryController
         }
     }
 
-    @PostMapping("/update-dictionary")
+    @PostMapping("/dictionary/update")
     public void updateDictionary(@RequestBody DictionaryUpdate dictionary)
     {
         try
@@ -61,7 +61,7 @@ public class DictionaryController
         }
     }
 
-    @PostMapping("/delete-dictionary")
+    @PostMapping("/dictionary/delete")
     public void deleteDictionary(@RequestBody Dictionary dictionary)
     {
         try

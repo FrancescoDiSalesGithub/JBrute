@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.jws.soap.SOAPBinding;
+
 
 @RestController
 public class UserController
@@ -23,7 +23,7 @@ public class UserController
 	@Autowired
 	UserService userService;
 
-	@PostMapping("save-credential")
+	@PostMapping("/user/insert")
 	public void insertCredential(@RequestBody User user)
 	{
 		try
@@ -38,7 +38,7 @@ public class UserController
 	}
 
 
-	@PostMapping("select-credential")
+	@PostMapping("/user/select")
 	public Object selectCredential(@RequestBody User user)
 	{
 		Object userOutput = null;
@@ -75,7 +75,7 @@ public class UserController
 
 	}
 	
-	@PostMapping("update-credential")
+	@PostMapping("/user/update")
 	public void updateCredential(@RequestBody User user)
 	{
 		try
@@ -88,7 +88,7 @@ public class UserController
 		}
 	}
 	
-	@PostMapping("delete-credential")
+	@PostMapping("/user/delete")
 	public void deleteCredential(@RequestBody User user)
 	{
 		try

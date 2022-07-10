@@ -17,7 +17,7 @@ public class PlatformController
     @Autowired
     PlatformService platformService;
 
-    @PostMapping("/insert-platform")
+    @PostMapping("/platform/insert")
     public void insertPlatform(@RequestBody Platform platform)
     {
         try
@@ -31,7 +31,7 @@ public class PlatformController
 
     }
 
-    @PostMapping("/select-platform")
+    @PostMapping("/platform/select")
     public void selectPlatform(@RequestBody Platform platform)
     {
         try
@@ -45,7 +45,7 @@ public class PlatformController
 
     }
 
-    @PostMapping("/update-platform")
+    @PostMapping("/platform/update")
     public void updatePlatform(@RequestBody Platform platform)
     {
         try
@@ -59,7 +59,7 @@ public class PlatformController
 
     }
 
-    @PostMapping("/delete-platform")
+    @PostMapping("/platform/delete")
     public void deletePlatform(@RequestBody Platform platform)
     {
         try
