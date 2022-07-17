@@ -3,8 +3,10 @@ package com.francescodisalesgithub.JBrute.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity(name = "platforms")
+@Table(schema = "brute",name="platforms")
 public class Platform
 {
 

@@ -1,4 +1,4 @@
-create table users
+create table brute.users
 (
 
 	email varchar(200),

@@ -1,4 +1,4 @@
-create table platforms
+create table brute.platforms
 (
 	site varchar(100),
 	url varchar(400),

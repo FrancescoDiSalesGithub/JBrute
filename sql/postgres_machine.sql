@@ -1,4 +1,4 @@
-create table machine
+create table brute.machine
 (
 
 

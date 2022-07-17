@@ -1,44 +1,60 @@
 package com.francescodisalesgithub.JBrute.entity;
 
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity(name = "dictionary")
+@Table(schema = "brute",name="dictionary")
 public class Dictionary
 {
+    
     @Id
-    @Column(name = "mnemonic_name")
-    private String mnemonicName;
-    @Column(name = "name")
+    @Column(name = "dictionary_name")
     private String name;
 
-    public Dictionary()
-    {
+    @ManyToMany(targetEntity = Words.class,cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @JoinTable(name = "dictionary_words",joinColumns = @JoinColumn(name = "dictionary_name"),inverseJoinColumns = @JoinColumn(name="words_id"))
+    private Set<Words> words = new HashSet<Words>();
 
-    }
+    
+	public Dictionary() {
+		super();
+	}
 
-    public Dictionary(String mnemonicName, String name)
-    {
-        this.mnemonicName = mnemonicName;
-        this.name = name;
-    }
+	public Dictionary(String name, Set<Words> words) {
+		super();
+		this.name = name;
+		this.words = words;
+	}
 
+	public String getName() {
+		return name;
+	}
 
-    public String getMnemonicName() {
-        return mnemonicName;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setMnemonicName(String mnemonicName) {
-        this.mnemonicName = mnemonicName;
-    }
+	public Set<Words> getWords() {
+		return words;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setWords(Set<Words> words) {
+		this.words = words;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    
+    
 }

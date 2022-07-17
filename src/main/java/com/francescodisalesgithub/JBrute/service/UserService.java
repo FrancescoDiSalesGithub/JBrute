@@ -20,7 +20,7 @@ public class UserService
 
     public void insertUser(User user)
     {
-        com.francescodisalesgithub.JBrute.entity.User userEntity = new com.francescodisalesgithub.JBrute.entity.User(user.getEmail(), user.getUsername(), user.getPassword());
+        com.francescodisalesgithub.JBrute.entity.User userEntity = new com.francescodisalesgithub.JBrute.entity.User(user.getEmail(), user.getUsername(), user.getPassword(),null);
         userRepository.save(userEntity);
     }
 
