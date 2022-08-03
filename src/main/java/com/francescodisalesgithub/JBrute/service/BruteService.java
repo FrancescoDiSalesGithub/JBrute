@@ -15,8 +15,10 @@ import org.slf4j.LoggerFactory;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.francescodisalesgithub.JBrute.model.BruteGetModel;
@@ -122,6 +124,30 @@ public class BruteService
 
 		org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
 		headers.add("Cookie", bruteModel.getCookies());
+		
+		if(bruteModel.getContentType().equalsIgnoreCase("application/xml"))
+			headers.setContentType(MediaType.APPLICATION_XML);
+		
+		if(bruteModel.getContentType().equalsIgnoreCase("application/json"))
+			headers.setContentType(MediaType.APPLICATION_JSON);
+		
+		if(bruteModel.getContentType().equals("application/x-www-form-urlencoded"))
+			headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+		
+		HttpEntity<String> httpEntity = new HttpEntity<>(bruteModel.getBodyRequest(),headers);		
+		RestTemplate restTemplate = new RestTemplate();
+		
+		try 
+		{
+			restTemplate.exchange(new URI(bruteModel.getWrongMessage()), HttpMethod.POST, httpEntity, String.class);
+		}
+		catch (RestClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return null;
 	}

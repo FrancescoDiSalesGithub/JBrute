@@ -1,5 +1,8 @@
 package com.francescodisalesgithub.JBrute.model;
 
+import lombok.Data;
+
+@Data
 public class Machine 
 {
 
@@ -7,24 +10,6 @@ public class Machine
 	private String hostname;
 	private String operativeSystem;
 
-	public String getIp() {
-		return ip;
-	}
-	public void setIp(String ip) {
-		this.ip = ip;
-	}
-	public String getHostname() {
-		return hostname;
-	}
-	public void setHostname(String hostname) {
-		this.hostname = hostname;
-	}
-	public String getOperativeSystem() {
-		return operativeSystem;
-	}
-	public void setOperativeSystem(String operativeSystem) {
-		this.operativeSystem = operativeSystem;
-	}
 	
 	
 	

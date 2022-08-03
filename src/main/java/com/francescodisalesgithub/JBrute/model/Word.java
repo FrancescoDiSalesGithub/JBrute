@@ -1,19 +1,11 @@
 package com.francescodisalesgithub.JBrute.model;
 
+import lombok.Data;
+
+@Data
 public class Word 
 {
 	
 	private String word;
 	
-	
-	
-	public String getWord() {
-		return word;
-	}
-	public void setWord(String word) {
-		this.word = word;
-	}
-	
-	
-
 }

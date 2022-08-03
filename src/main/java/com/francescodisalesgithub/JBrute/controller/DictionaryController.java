@@ -1,7 +1,9 @@
 package com.francescodisalesgithub.JBrute.controller;
 
+import com.francescodisalesgithub.JBrute.enums.RestResponseMessagesEnum;
 import com.francescodisalesgithub.JBrute.model.Dictionary;
 import com.francescodisalesgithub.JBrute.model.DictionaryInsert;
+import com.francescodisalesgithub.JBrute.model.DictionarySelect;
 import com.francescodisalesgithub.JBrute.model.DictionaryUpdate;
 
 import com.francescodisalesgithub.JBrute.service.DictionaryService;
@@ -38,15 +40,16 @@ public class DictionaryController
     }
 
     @PostMapping("/dictionary/select")
-    public void selectDictionary(@RequestBody Dictionary dictionary)
+    public Object selectDictionary(@RequestBody Dictionary dictionary)
     {
         try
         {
-            dictionaryService.selectDictionary(dictionary);
+            return dictionaryService.selectDictionary(dictionary);
         }
         catch(Exception e)
         {
             logger.error(e.getMessage());
+            return new String(RestResponseMessagesEnum.ERROR_SELECT_DICTIONARY.toString());
         }
     }
 

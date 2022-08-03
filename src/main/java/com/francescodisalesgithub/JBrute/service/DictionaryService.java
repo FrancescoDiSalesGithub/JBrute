@@ -3,6 +3,7 @@ package com.francescodisalesgithub.JBrute.service;
 import com.francescodisalesgithub.JBrute.entity.Words;
 import com.francescodisalesgithub.JBrute.model.Dictionary;
 import com.francescodisalesgithub.JBrute.model.DictionaryInsert;
+import com.francescodisalesgithub.JBrute.model.DictionarySelect;
 import com.francescodisalesgithub.JBrute.model.DictionaryUpdate;
 import com.francescodisalesgithub.JBrute.repository.DictionaryRepository;
 import com.francescodisalesgithub.JBrute.repository.WordRepository;
@@ -13,6 +14,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -48,17 +50,40 @@ public class DictionaryService
 
     public void updateDictionary(DictionaryUpdate dictionaryUpdate)
     {
-
+    		try
+    		{
+    			dictionaryRepository.updateDictionary();
+    		}
+    		catch(Exception e)
+    		{
+    			
+    		}
     }
 
     public void deleteDictionary(Dictionary dictionary)
     {
-
+    	try
+    	{
+    		dictionaryRepository.deleteById(dictionary.getName());
+    	}
+    	catch(Exception e)
+    	{
+    		
+    	}
+    		
     }
 
-    public void selectDictionary(Dictionary dictionary)
+    public DictionarySelect  selectDictionary(Dictionary dictionary)
     {
-
+    	    	
+    	Set<Words> contentDictionary = dictionaryRepository.findById(dictionary.getName()).get().getWords();
+    	
+    	DictionarySelect dictionarySelect = new DictionarySelect();
+    	dictionarySelect.setName(dictionary.getName());
+    	dictionarySelect.setContent(contentDictionary);
+    	
+    	return dictionarySelect;
+    	
     }
     
     public void addWordsDictionary(Dictionary dictionary)

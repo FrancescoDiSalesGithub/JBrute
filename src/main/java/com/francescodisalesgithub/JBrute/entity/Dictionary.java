@@ -15,8 +15,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity(name = "dictionary")
 @Table(schema = "brute",name="dictionary")
+@Data
 public class Dictionary
 {
     
@@ -36,22 +39,6 @@ public class Dictionary
 	public Dictionary(String name, Set<Words> words) {
 		super();
 		this.name = name;
-		this.words = words;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Set<Words> getWords() {
-		return words;
-	}
-
-	public void setWords(Set<Words> words) {
 		this.words = words;
 	}
 

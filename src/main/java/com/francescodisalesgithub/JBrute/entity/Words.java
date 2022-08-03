@@ -12,8 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity(name = "words")
 @Table(name = "words",schema="brute")
+@Data
 public class Words 
 {
 	@Id
@@ -37,27 +40,6 @@ public class Words
 		this.word = word;
 		this.dictionary = dictionary;
 	}
-	
-	public Integer getIdWord() {
-		return idWord;
-	}
-	public void setIdWord(Integer idWord) {
-		this.idWord = idWord;
-	}
-	public String getWord() {
-		return word;
-	}
-	public void setWord(String word) {
-		this.word = word;
-	}
-	public Set<Dictionary> getDictionary() {
-		return dictionary;
-	}
-	public void setDictionary(Set<Dictionary> dictionary) {
-		this.dictionary = dictionary;
-	}
-	
-	
 	
 
 }

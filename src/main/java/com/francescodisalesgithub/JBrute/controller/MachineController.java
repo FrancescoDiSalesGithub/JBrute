@@ -1,14 +1,20 @@
 package com.francescodisalesgithub.JBrute.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.francescodisalesgithub.JBrute.service.MachineService;
+
 @RestController
 public class MachineController 
 {
+	
+	@Autowired
+	MachineService machineService;
 	
 	@PostMapping("/machine/insert")
 	public void insertMachine()

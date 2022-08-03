@@ -14,5 +14,6 @@ import org.springframework.data.repository.query.Param;
 public interface DictionaryRepository extends CrudRepository<Dictionary,String>
 {
 
-
+	@Query(value = "Update dictionary set name= ? and word = ? where name= ?")
+	public void updateDictionary();
 }

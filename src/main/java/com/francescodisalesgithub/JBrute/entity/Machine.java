@@ -10,8 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity(name = "machine")
 @Table(schema = "brute",name="machine")
+@Data
 public class Machine
 {
     @Column(name = "ip")
@@ -37,37 +40,5 @@ public class Machine
 
     }
 
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
-    public String getHostname() {
-        return hostname;
-    }
-
-    public void setHostname(String hostname) {
-        this.hostname = hostname;
-    }
-
-    public String getOperativeSystem() {
-        return operativeSystem;
-    }
-
-    public void setOperativeSystem(String operativeSystem) {
-        this.operativeSystem = operativeSystem;
-    }
-
-	public Set<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(Set<User> users) {
-		this.users = users;
-	}
-    
     
 }

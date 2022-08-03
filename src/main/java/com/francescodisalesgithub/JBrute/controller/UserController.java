@@ -51,7 +51,7 @@ public class UserController
 		{
 			logger.error(ue.getMessage());
 			MessagerRestResponse responseMessager = new MessagerRestResponse();
-			responseMessager.setMessage(RestResponseMessagesEnum.ERROR_DATABASE.toString());
+			//responseMessager.set(RestResponseMessagesEnum.ERROR_DATABASE.toString());
 
 			return responseMessager;
 		}
